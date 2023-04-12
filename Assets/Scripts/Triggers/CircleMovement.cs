@@ -50,6 +50,7 @@ public class CircleMovement : MonoBehaviour
     void DoExitAction(DirectionBox directionBox)
     {
         directionBox.GetComponent<SpriteRenderer>().color=Color.green;
+        EventManager.Broadcast(GameEvent.OnIncreaseScore);
         directionBox.canPass=false;
         //Bir daha buradan gecemezsin
     }

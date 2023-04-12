@@ -13,11 +13,7 @@ public enum GameEvent
     
 
     //Moves
-    OnMove,
-    OnLeftMove,
-    OnUpMove,
-    OnRightMove,
-    OnDownMove
+    OnMove
 
     
 
