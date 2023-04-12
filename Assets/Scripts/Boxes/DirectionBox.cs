@@ -20,7 +20,7 @@ public class DirectionBox : MonoBehaviour
     public void Init(int i,int j,int index,Sprite sprite,Action<int,int> swapFunc)
     {
         this.index=index;
-        this.GetComponent<SpriteRenderer>().sprite=sprite;
+        this.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite=sprite;
         UpdatePos(i,j);
         this.swapFunc=swapFunc;
 
@@ -43,7 +43,7 @@ public class DirectionBox : MonoBehaviour
         if(Input.GetMouseButtonDown(0) && swapFunc!=null)
         {
             swapFunc(x,y);
-            transform.DOScale(Vector3.one/2,0.2f).OnComplete(()=>transform.DOScale(Vector3.one,0.2f));
+            transform.DOScale(Vector3.one/2,0.2f).OnComplete(()=>transform.DOScale(new Vector3(0.9f,0.9f,0.9f),0.2f));
         }
 
         

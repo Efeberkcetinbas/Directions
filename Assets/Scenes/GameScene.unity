@@ -269,21 +269,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   directionPrefab: {fileID: 313240632609067902, guid: bbb9aca88f865904696ede6cdc93afca, type: 3}
   sprites:
-  - {fileID: -2001748618, guid: 8ad05e7a799406b4da7e6b251fe9b5e0, type: 3}
-  - {fileID: 2032470115, guid: 8ad05e7a799406b4da7e6b251fe9b5e0, type: 3}
-  - {fileID: 2032470115, guid: 8ad05e7a799406b4da7e6b251fe9b5e0, type: 3}
-  - {fileID: 1042197245, guid: 8ad05e7a799406b4da7e6b251fe9b5e0, type: 3}
-  - {fileID: 2032470115, guid: 8ad05e7a799406b4da7e6b251fe9b5e0, type: 3}
-  - {fileID: -1764647644, guid: 8ad05e7a799406b4da7e6b251fe9b5e0, type: 3}
-  - {fileID: -2001748618, guid: 8ad05e7a799406b4da7e6b251fe9b5e0, type: 3}
-  - {fileID: 1042197245, guid: 8ad05e7a799406b4da7e6b251fe9b5e0, type: 3}
-  - {fileID: 2032470115, guid: 8ad05e7a799406b4da7e6b251fe9b5e0, type: 3}
-  - {fileID: 1042197245, guid: 8ad05e7a799406b4da7e6b251fe9b5e0, type: 3}
-  - {fileID: -2001748618, guid: 8ad05e7a799406b4da7e6b251fe9b5e0, type: 3}
-  - {fileID: 2032470115, guid: 8ad05e7a799406b4da7e6b251fe9b5e0, type: 3}
-  - {fileID: -1764647644, guid: 8ad05e7a799406b4da7e6b251fe9b5e0, type: 3}
-  - {fileID: -2001748618, guid: 8ad05e7a799406b4da7e6b251fe9b5e0, type: 3}
-  - {fileID: 1042197245, guid: 8ad05e7a799406b4da7e6b251fe9b5e0, type: 3}
+  - {fileID: 21300000, guid: a2f93ca782289dd4ea8b43544a2dd720, type: 3}
+  - {fileID: 21300000, guid: 5af9190917698af4db43c30e0a01617e, type: 3}
+  - {fileID: 21300000, guid: 5af9190917698af4db43c30e0a01617e, type: 3}
+  - {fileID: 21300000, guid: 58c4e7a9790839541896ffe129f33770, type: 3}
+  - {fileID: 21300000, guid: 5af9190917698af4db43c30e0a01617e, type: 3}
+  - {fileID: 21300000, guid: 777e7f4ab8517ef479cc6df2d091d95b, type: 3}
+  - {fileID: 21300000, guid: a2f93ca782289dd4ea8b43544a2dd720, type: 3}
+  - {fileID: 21300000, guid: 58c4e7a9790839541896ffe129f33770, type: 3}
+  - {fileID: 21300000, guid: 5af9190917698af4db43c30e0a01617e, type: 3}
+  - {fileID: 21300000, guid: 58c4e7a9790839541896ffe129f33770, type: 3}
+  - {fileID: 21300000, guid: a2f93ca782289dd4ea8b43544a2dd720, type: 3}
+  - {fileID: 21300000, guid: 5af9190917698af4db43c30e0a01617e, type: 3}
+  - {fileID: 21300000, guid: 777e7f4ab8517ef479cc6df2d091d95b, type: 3}
+  - {fileID: 21300000, guid: a2f93ca782289dd4ea8b43544a2dd720, type: 3}
+  - {fileID: 21300000, guid: 58c4e7a9790839541896ffe129f33770, type: 3}
   - {fileID: 0}
   puzzleLength: 17
 --- !u!4 &718602772
@@ -360,7 +360,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 0, g: 0.47009897, b: 1, a: 1}
   m_FlipX: 0

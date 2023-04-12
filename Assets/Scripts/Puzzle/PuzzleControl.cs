@@ -34,10 +34,11 @@ public class PuzzleControl : MonoBehaviour
 
                 if(n<puzzleLength-1)
                 {
-                    if(tempDirectionPrefab.GetComponent<SpriteRenderer>().sprite.name=="Up") tempDirectionPrefab.isUp=true;
-                    if(tempDirectionPrefab.GetComponent<SpriteRenderer>().sprite.name=="Down") tempDirectionPrefab.isDown=true;
-                    if(tempDirectionPrefab.GetComponent<SpriteRenderer>().sprite.name=="Left") tempDirectionPrefab.isLeft=true;
-                    if(tempDirectionPrefab.GetComponent<SpriteRenderer>().sprite.name=="Right") tempDirectionPrefab.isRight=true;
+                    //Daha duzgun sprite lar alinca getChildlari kaldirirsin hem buradan hem de directionBoxtan
+                    if(tempDirectionPrefab.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite.name=="ArrowTop") tempDirectionPrefab.isUp=true;
+                    if(tempDirectionPrefab.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite.name=="ArrowBottom") tempDirectionPrefab.isDown=true;
+                    if(tempDirectionPrefab.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite.name=="ArrowLeft") tempDirectionPrefab.isLeft=true;
+                    if(tempDirectionPrefab.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite.name=="ArrowRight") tempDirectionPrefab.isRight=true;
                 }
                 
             }
