@@ -10,6 +10,10 @@ public class PuzzleControl : MonoBehaviour
 
     public Sprite[] sprites;
 
+    private DirectionBox tempDirectionPrefab;
+
+    [SerializeField] private int puzzleLength;
+
     private void Start() 
     {
         Init();
@@ -25,10 +29,25 @@ public class PuzzleControl : MonoBehaviour
                 DirectionBox directionBox=Instantiate(directionPrefab,new Vector2(x,y),Quaternion.identity);
                 directionBox.Init(x,y,n+1,sprites[n],ClickToSwap);
                 directions[x,y]=directionBox;
+                tempDirectionPrefab=directionBox;
                 n++;
+
+                if(n<puzzleLength-1)
+                {
+                    if(tempDirectionPrefab.GetComponent<SpriteRenderer>().sprite.name=="Up") tempDirectionPrefab.isUp=true;
+                    if(tempDirectionPrefab.GetComponent<SpriteRenderer>().sprite.name=="Down") tempDirectionPrefab.isDown=true;
+                    if(tempDirectionPrefab.GetComponent<SpriteRenderer>().sprite.name=="Left") tempDirectionPrefab.isLeft=true;
+                    if(tempDirectionPrefab.GetComponent<SpriteRenderer>().sprite.name=="Right") tempDirectionPrefab.isRight=true;
+                }
+                
             }
         }
+
+        
+
     }
+
+    
 
     private void ClickToSwap(int x,int y)
     {
