@@ -14,17 +14,47 @@ public class PuzzleControl : MonoBehaviour
 
     [SerializeField] private int puzzleLength;
 
+    private List<Color> colors=new List<Color>();
+
+    [SerializeField] private int yValue,xValue,indexValue,minX,maxX;
+
+    private void OnEnable() 
+    {
+        EventManager.AddHandler(GameEvent.OnCheckFinish,OnCheckFinish);
+    }
+
+    private void OnDisable() 
+    {
+        EventManager.RemoveHandler(GameEvent.OnCheckFinish,OnCheckFinish);
+    }
+
+    void OnCheckFinish()
+    {
+        //Burada Check islemi olacak
+
+    }
     private void Start() 
     {
+        AddingListColor();
         Init();
     }
+
+    void AddingListColor()
+    {
+        colors.Add(Color.red);
+        colors.Add(Color.blue);
+        colors.Add(Color.yellow);
+        colors.Add(Color.magenta);
+    }
+
+    
 
     void Init()
     {
         int n=0;
-        for(int y=3; y>=0; y--)
+        for(int y=yValue; y>=0; y--)
         {
-            for(int x=0; x<4; x++)
+            for(int x=0; x<xValue; x++)
             {   
                 DirectionBox directionBox=Instantiate(directionPrefab,new Vector2(x,y),Quaternion.identity);
                 directionBox.Init(x,y,n+1,sprites[n],ClickToSwap);
@@ -36,11 +66,12 @@ public class PuzzleControl : MonoBehaviour
                 {
                     //Daha duzgun sprite lar alinca getChildlari kaldirirsin hem buradan hem de directionBoxtan
                     if(tempDirectionPrefab.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite.name=="ArrowTop") tempDirectionPrefab.isUp=true;
-                    if(tempDirectionPrefab.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite.name=="ArrowBottom") tempDirectionPrefab.isDown=true;
+                    if(tempDirectionPrefab.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite.name=="ArrowButtom") tempDirectionPrefab.isDown=true;
                     if(tempDirectionPrefab.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite.name=="ArrowLeft") tempDirectionPrefab.isLeft=true;
                     if(tempDirectionPrefab.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite.name=="ArrowRight") tempDirectionPrefab.isRight=true;
                 }
                 
+                tempDirectionPrefab.transform.GetChild(0).GetComponent<SpriteRenderer>().color=colors[Random.Range(0,colors.Count)];
             }
         }
 
@@ -71,10 +102,10 @@ public class PuzzleControl : MonoBehaviour
     private int getDx(int x,int y)
     {
         //is Right Empty
-        if(x<3 && directions[x+1,y].IsEmpty())
+        if(x<minX && directions[x+1,y].IsEmpty(indexValue))
             return 1;
         //is Left Empty
-        if(x>0 && directions[x-1,y].IsEmpty())
+        if(x>0 && directions[x-1,y].IsEmpty(indexValue))
             return -1;
 
         return 0;
@@ -83,9 +114,9 @@ public class PuzzleControl : MonoBehaviour
     private int getDy(int x,int y)
     {   
         //is Top Empty
-        if(y<3 && directions[x,y+1].IsEmpty())
+        if(y<maxX && directions[x,y+1].IsEmpty(indexValue))
             return 1;
-        if(y>0 && directions[x,y-1].IsEmpty())
+        if(y>0 && directions[x,y-1].IsEmpty(indexValue))
             return -1;
 
         return 0;

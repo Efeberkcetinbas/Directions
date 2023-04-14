@@ -33,9 +33,9 @@ public class DirectionBox : MonoBehaviour
         this.gameObject.transform.localPosition=new Vector2(i,j);
     }
 
-    public bool IsEmpty()
+    public bool IsEmpty(int _index)
     {
-        return index==16;
+        return index==_index;
     }
 
     private void OnMouseDown() 
@@ -43,6 +43,7 @@ public class DirectionBox : MonoBehaviour
         if(Input.GetMouseButtonDown(0) && swapFunc!=null)
         {
             swapFunc(x,y);
+            EventManager.Broadcast(GameEvent.OnMove);
             transform.DOScale(Vector3.one/2,0.2f).OnComplete(()=>transform.DOScale(new Vector3(0.9f,0.9f,0.9f),0.2f));
         }
 

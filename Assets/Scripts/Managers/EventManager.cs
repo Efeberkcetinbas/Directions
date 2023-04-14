@@ -11,8 +11,11 @@ public enum GameEvent
     OnUpdateGameOverUI,
     
     
+    
 
     //Moves
+    OnCanPass,
+    OnCheckFinish,
     OnMove
 
     
