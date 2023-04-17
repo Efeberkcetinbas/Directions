@@ -216,6 +216,7 @@ MonoBehaviour:
   isUp: 0
   isDown: 0
   canPass: 1
+  gameData: {fileID: 11400000, guid: 7c6d5804157830e408d39233373428fd, type: 2}
 --- !u!50 &1818642592985951928
 Rigidbody2D:
   serializedVersion: 4

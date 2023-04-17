@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PuzzleControl : MonoBehaviour
 {
+    public GameData gameData;
     public DirectionBox directionPrefab;
 
     public DirectionBox[,] directions=new DirectionBox[4,4];
@@ -18,6 +19,8 @@ public class PuzzleControl : MonoBehaviour
 
     [SerializeField] private int yValue,xValue,indexValue,minX,maxX;
 
+    [SerializeField] private int _requiredNumber;
+
     private void OnEnable() 
     {
         EventManager.AddHandler(GameEvent.OnCheckFinish,OnCheckFinish);
@@ -28,11 +31,7 @@ public class PuzzleControl : MonoBehaviour
         EventManager.RemoveHandler(GameEvent.OnCheckFinish,OnCheckFinish);
     }
 
-    void OnCheckFinish()
-    {
-        //Burada Check islemi olacak
-
-    }
+    
     private void Start() 
     {
         AddingListColor();
@@ -48,15 +47,23 @@ public class PuzzleControl : MonoBehaviour
     }
 
     
+    void OnCheckFinish()
+    {
+        if(_requiredNumber==gameData.RequiredBox)
+            EventManager.Broadcast(GameEvent.OnSuccess);
+        else
+            return;
+    }
 
     void Init()
     {
+        
         int n=0;
         for(int y=yValue; y>=0; y--)
         {
             for(int x=0; x<xValue; x++)
             {   
-                DirectionBox directionBox=Instantiate(directionPrefab,new Vector2(x,y),Quaternion.identity);
+                DirectionBox directionBox=Instantiate(directionPrefab,new Vector2(x,y),Quaternion.identity,transform);
                 directionBox.Init(x,y,n+1,sprites[n],ClickToSwap);
                 directions[x,y]=directionBox;
                 tempDirectionPrefab=directionBox;

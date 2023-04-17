@@ -10,6 +10,22 @@ public class TimeManager : MonoBehaviour
     public GameData gameData;
 
 
+    private void OnEnable() 
+    {
+        EventManager.AddHandler(GameEvent.OnSuccess,OnStopTime);
+        EventManager.AddHandler(GameEvent.OnGameOver,OnStopTime);
+    }
+
+    private void OnDisable() 
+    {
+        EventManager.RemoveHandler(GameEvent.OnSuccess,OnStopTime);
+        EventManager.RemoveHandler(GameEvent.OnGameOver,OnStopTime);
+    }
+
+    void OnStopTime()
+    {
+        gameData.timerIsRunning=false;
+    }
     
 
     void Update()

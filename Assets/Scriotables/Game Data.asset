@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63dabfd79891f3a4095e72c63635f3e6, type: 3}
   m_Name: Game Data
   m_EditorClassIdentifier: 
-  score: 0
+  score: 15
   highScore: 0
-  RemainingTime: 0
-  timerIsRunning: 1
+  RemainingTime: 8.1447315
+  timerIsRunning: 0
   increaseScore: 5
+  RequiredBox: 4

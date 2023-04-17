@@ -9,6 +9,8 @@ public enum GameEvent
     OnGameOver,
     OnUpdateUI,
     OnUpdateGameOverUI,
+    OnSuccess,
+    OnNextLevel,
     
     
     

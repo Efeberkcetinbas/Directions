@@ -17,6 +17,8 @@ public class DirectionBox : MonoBehaviour
 
     public bool canPass=true;
 
+    public GameData gameData;
+
     public void Init(int i,int j,int index,Sprite sprite,Action<int,int> swapFunc)
     {
         this.index=index;
@@ -40,7 +42,7 @@ public class DirectionBox : MonoBehaviour
 
     private void OnMouseDown() 
     {
-        if(Input.GetMouseButtonDown(0) && swapFunc!=null)
+        if(Input.GetMouseButtonDown(0) && swapFunc!=null && !gameData.isGameEnd)
         {
             swapFunc(x,y);
             EventManager.Broadcast(GameEvent.OnMove);

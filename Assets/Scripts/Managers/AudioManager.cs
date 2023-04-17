@@ -22,13 +22,13 @@ public class AudioManager : MonoBehaviour
     {
         EventManager.AddHandler(GameEvent.OnGameOver,OnGameOver);
         EventManager.AddHandler(GameEvent.OnMove,OnMove);
-        EventManager.AddHandler(GameEvent.OnCanPass,OnCanPass);
+        EventManager.AddHandler(GameEvent.OnIncreaseScore,OnCanPass);
     }
     private void OnDisable() 
     {
         EventManager.RemoveHandler(GameEvent.OnGameOver,OnGameOver);
         EventManager.RemoveHandler(GameEvent.OnMove,OnMove);
-        EventManager.RemoveHandler(GameEvent.OnCanPass,OnCanPass);
+        EventManager.RemoveHandler(GameEvent.OnIncreaseScore,OnCanPass);
     }
 
     void OnCanPass()

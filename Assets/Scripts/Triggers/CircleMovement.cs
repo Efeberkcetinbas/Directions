@@ -8,6 +8,8 @@ public class CircleMovement : MonoBehaviour
     [SerializeField] private Transform startPoint;
     private bool isBeginToMove=false;
 
+    public GameData gameData;
+
     
     private void OnMouseDown() 
     {
@@ -23,7 +25,7 @@ public class CircleMovement : MonoBehaviour
         {
             Debug.Log("TOUCH");
             StartCoroutine(Move(other.GetComponent<DirectionBox>()));
-            EventManager.Broadcast(GameEvent.OnCheckFinish);
+
         }
     }
 
@@ -38,7 +40,7 @@ public class CircleMovement : MonoBehaviour
 
     private IEnumerator Move(DirectionBox directionBox)
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1f);
         if(directionBox.isUp && directionBox.canPass) transform.DOLocalMoveY(transform.position.y+1,1f);
         if(directionBox.isDown && directionBox.canPass) transform.DOLocalMoveY(transform.position.y-1,1f);
         if(directionBox.isLeft && directionBox.canPass) transform.DOLocalMoveX(transform.position.x-1,1f);
@@ -51,7 +53,9 @@ public class CircleMovement : MonoBehaviour
         }
         else
         {
-            EventManager.Broadcast(GameEvent.OnCanPass);
+            gameData.RequiredBox++;
+            EventManager.Broadcast(GameEvent.OnCheckFinish);
+            //EventManager.Broadcast(GameEvent.OnCanPass);
         }
     } 
 

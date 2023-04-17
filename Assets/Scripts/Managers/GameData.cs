@@ -10,9 +10,12 @@ public class GameData : ScriptableObject
     public float RemainingTime;
 
     public bool timerIsRunning=false;
+    public bool isGameEnd=false;
+
 
     //ilerde gelistirmelerle artar
     public int increaseScore=1;
+    public int RequiredBox;
     
     
 }
