@@ -10,12 +10,22 @@ public class CircleMovement : MonoBehaviour
 
     public GameData gameData;
 
+    private void OnEnable() 
+    {
+        EventManager.AddHandler(GameEvent.OnSuccess,ResetPos);
+    }
+
+    private void OnDisable() 
+    {
+        EventManager.RemoveHandler(GameEvent.OnSuccess,ResetPos);
+    }
+
     
     private void OnMouseDown() 
     {
         if(!isBeginToMove)
         {
-            transform.DOLocalMove(startPoint.position,1f);
+            transform.DOLocalMove(gameData.StartPoint,1f);
             isBeginToMove=true;
         }
     }
@@ -24,6 +34,7 @@ public class CircleMovement : MonoBehaviour
         if(other.CompareTag("Block"))
         {
             Debug.Log("TOUCH");
+            DoExitAction(other.GetComponent<DirectionBox>());
             StartCoroutine(Move(other.GetComponent<DirectionBox>()));
 
         }
@@ -33,7 +44,9 @@ public class CircleMovement : MonoBehaviour
     {
         if(other.CompareTag("Block"))
         {
-            DoExitAction(other.GetComponent<DirectionBox>());
+            //DoExitAction(other.GetComponent<DirectionBox>());
+            DoExit(other.GetComponent<DirectionBox>());
+            //Eger cikinca olmasini istiyorsan exit'da sadece calistir!
         }
         
     }
@@ -63,7 +76,19 @@ public class CircleMovement : MonoBehaviour
     {
         directionBox.GetComponent<SpriteRenderer>().color=Color.green;
         EventManager.Broadcast(GameEvent.OnIncreaseScore);
-        directionBox.canPass=false;
+        //directionBox.canPass=false;
         //Bir daha buradan gecemezsin
     }
+
+    void DoExit(DirectionBox directionBox)
+    {
+        directionBox.canPass=false;
+    }
+
+    private void ResetPos()
+    {
+        transform.position=new Vector3(1.5f,-3.5f,0);
+        isBeginToMove=false;
+    }
+
 }

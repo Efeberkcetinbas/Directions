@@ -16,6 +16,8 @@ public class GameData : ScriptableObject
     //ilerde gelistirmelerle artar
     public int increaseScore=1;
     public int RequiredBox;
+
+    public Vector3 StartPoint;
     
     
 }
